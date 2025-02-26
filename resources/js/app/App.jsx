@@ -1,4 +1,4 @@
-import Button from "../component/Button/Button";
+import Button from "../components/Button/Button";
 const App = () => {
     return (
         <Button />
