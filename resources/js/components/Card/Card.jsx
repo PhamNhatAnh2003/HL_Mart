@@ -1,6 +1,6 @@
 import classNames from "classnames/bind";
 import styles from "./Card.module.scss";
-// import Rating from "../Rating";
+import Rating from "../Rating";
 import Button from "../Button";
 import images from "~/assets/images";
 import { useNavigate } from "react-router-dom";
@@ -40,11 +40,11 @@ const Card = ({ product = Product }) => {
                 <div className={cx("name")}>{product.name}</div>
                 <div className={cx("price-and-distance")}>
                     <div className={cx("price")}>
-                        {product.price} 
+                       Gia ban {product.price} 
                     </div>
                 </div>
                 <div className={cx("rating-box")}>
-                    {/* <Rating rate={restaurant.rating} /> */}
+                    <Rating rate={product.rating} />
                     <div className={cx("number")}>
                         (<span>{product.number}</span> Đánh giá)
                     </div>
