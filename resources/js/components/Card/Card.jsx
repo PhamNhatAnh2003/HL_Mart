@@ -1,14 +1,67 @@
-import React from "react";
-import styles from "./Button.module.scss";
+import classNames from "classnames/bind";
+import styles from "./Card.module.scss";
+// import Rating from "../Rating";
+import Button from "../Button";
+import images from "~/assets/images";
+import { useNavigate } from "react-router-dom";
 
-export default function Button({ label, className, type, onClick }) {
+const cx = classNames.bind(styles);
+
+const Product = {
+    id: 5,
+    avatar: images.product,
+    name: "Products",
+    price: "50k",
+    distance: "2km",
+    number: 1500,
+    rate: 3.6,
+};
+
+const formatDistance = (distance) => {
+    return `${Math.round(distance)} Km`;
+};
+
+const Card = ({ product = Product }) => {
+    // const navigate = useNavigate();
+
+    const handleSeeDetail = () => {
+        navigate(`/restaurant/${product.id}`);
+    };
     return (
-        <button
-            className={`${styles["custom-button"]} ${className}`}
-            type={type}
-            onClick={onClick}
-        >
-            {label}
-        </button>
+        <div className={cx("card")}>
+            <div className={cx("avatar")}>
+                <img
+                    src={product.avatar ?? images.product}
+                    alt="avatar"
+                />
+            </div>
+
+            <div className={cx("content")}>
+                <div className={cx("name")}>{product.name}</div>
+                <div className={cx("price-and-distance")}>
+                    <div className={cx("price")}>
+                        {product.price} 
+                    </div>
+                </div>
+                <div className={cx("rating-box")}>
+                    {/* <Rating rate={restaurant.rating} /> */}
+                    <div className={cx("number")}>
+                        (<span>{product.number}</span> Đánh giá)
+                    </div>
+                </div>
+            </div>
+
+            <Button
+                className={cx("view-btn")}
+                
+                curved
+                shadow
+                onClick={handleSeeDetail}
+            >
+            Thêm vào giỏ hàng
+            </Button>
+        </div>
     );
-}
+};
+
+export default Card;

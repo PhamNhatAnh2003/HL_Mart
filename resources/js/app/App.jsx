@@ -1,15 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import HeaderUser from "../layouts/components/Header/headerUser";
+import Card from "../components/Card/Card";
+import React from "react";
+
+
 
 const App = () => {
     return (
-        <Router>
-            <HeaderUser /> 
-            <Routes>
-                <Route path="/" element={null} />
-                <Route path="/about" element={null} />
-            </Routes>
-        </Router>
+     <Card />
     );
 }
 export default App;
