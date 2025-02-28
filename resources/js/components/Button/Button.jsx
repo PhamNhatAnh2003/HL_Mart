@@ -1,14 +1,25 @@
 import React from "react";
 import styles from "./Button.module.scss";
+import classNames from "classnames/bind";
 
-export default function Button({ label, className, type, onClick }) {
+const cx = classNames.bind(styles);
+const Button = ({
+    type = "primary",
+    size = "md",
+    disabled,
+    children,
+    onClick,
+}) => {
     return (
         <button
-            className={`${styles["custom-button"]} ${className}`}
-            type={type}
+            className={classNames(styles.button, styles[type], styles[size], {
+                [styles.disabled]: disabled,
+            })}
             onClick={onClick}
+            disabled={disabled}
         >
-            {label}
+            {children}
         </button>
     );
-}
+};
+export default Button;
